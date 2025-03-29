@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Birthday Card</title>
+    <style>
+            body {
+                background-image: url("pokemon.png"); /* Pokémon background image */
+                background-size: cover; /* Cover the entire viewport */
+                background-position: center; /* Center the image */
+                background-repeat: no-repeat; /* Prevent the image from repeating */
+                margin: 0; /* Remove default margin */
+                font-family: 'Arial', sans-serif;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                overflow: hidden; /* Prevent scrolling due to confetti */
+            }
+            .card {
+                background: rgb(105, 101, 164);
+                /*border-radius: 15px;*/
+                box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.2);
+                border-radius: 10%;
+                text-align: center;
+                padding: 20px;
+                max-width: 400px;
+                max-height: auto; /* Set a maximum height for the card */
+                width: 100%;
+                height: 100%;
+                position: relative;
+                overflow: hidden; /* Prevent overflow of confetti */
+                margin-top: 20px;
+                
+            }
+            h1 {
+                color: rgb(187, 219, 242); /* Pokémon blue */
+                font-size: 24px;
+                margin-bottom: 20px;
+                margin-top: 20px;
+                border-radius: 15px;
+                padding: 10px;
+                background-color: #3b4cca; /* Pokémon yellow */
+                /*background-color: #3b4cca; /* Pokémon blue */
+            }
+            
+            /*.cake img {
+                width: 20%; /* Smaller cake */
+               /* height: 20%; /* Smaller cake */
+               /* margin: 10px 0;
+            }/* Removed cake image */
+            .cake-container {
+                position: relative; /* Allow absolute positioning of cake layers */
+                width: 250px; /* Set a fixed width for the cake container */
+                height: 300px; /* Set a fixed height for the cake container */
+                margin: 0 auto; /* Center the cake container */
+                overflow: hidden; /* Prevent overflow of cake layers */
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+                margin-bottom: 40px;
+                z-index: 20; /* Ensure the cake is above the confetti */
+            }
+            .cake {
+                --vanilla: #f0e4d0;
+                --chocolate: #553c13;
+                position: absolute;
+                width: 250px;
+                height: 200px;
+                top: 50%;
+                left: 50%;
+                margin-top: -70px;
+                margin-left: -125px;
+                margin-bottom: 20px;
+                z-index: 20; /* Ensure the cake is above the confetti */
+            }
+    
+            .layer {
+                position: absolute;
+                display: block;
+                width: 250px;
+                height: 100px;
+                border-radius: 50%;
+                background-color: var(--chocolate);
+                box-shadow:
+                    0 2px 0px lighten(var(--chocolate), 5%),
+                    0 4px 0px darken(var(--chocolate), 8.2%),
+                    0 6px 0px darken(var(--chocolate), 8.4%),
+                    0 8px 0px darken(var(--chocolate), 8.6%),
+                    0 10px 0px darken(var(--chocolate), 8.8%),
+                    0 12px 0px darken(var(--chocolate), 9%),
+                    0 14px 0px darken(var(--chocolate), 9.2%),
+                    0 16px 0px darken(var(--chocolate), 9.4%),
+                    0 18px 0px darken(var(--chocolate), 9.6%),
+                    0 20px 0px darken(var(--chocolate), 9.8%),
+                    0 22px 0px darken(var(--chocolate), 10%),
+                    0 24px 0px darken(var(--chocolate), 10.2%),
+                    0 26px 0px darken(var(--chocolate), 10.4%),
+                    0 28px 0px darken(var(--chocolate), 10.6%),
+                    0 30px 0px darken(var(--chocolate), 10.8%);
+            }
+            
+            .plate {
+                width: 270px;
+                height: 110px;
+                position: absolute;
+                bottom: -10px;
+                left: -10px;
+                background-color: #ccc;
+                border-radius: 50%;
+                box-shadow:
+                    0 2px 0 darken(#ccc, 10%),
+                    0 4px 0 darken(#ccc, 10%),
+                    0 5px 40px rgba(black, 0.5);
+            }
+            
+            .cake > * {
+                position: absolute;
+            }
+            
+            .layer-top { top: 0px; }
+            .layer-middle { top: 33px; }
+            .layer-bottom { top: 66px; }
+            
+            .icing {
+                top: 2px;
+                left: 5px;
+                background-color: var(--vanilla);
+                width: 240px;
+                height: 90px;
+                border-radius: 50%;
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: 4px;
+                    right: 5px;
+                    bottom: 6px;
+                    left: 5px;
+                    background-color: #f3e5c3; /* lighten($vanilla, 3%) */
+                    box-shadow:
+                        0 0 4px #f7e9d0, /* lighten($vanilla, 5%) */
+                        0 0 4px #f7e9d0, /* lighten($vanilla, 5%) */
+                        0 0 4px #f7e9d0; /* lighten($vanilla, 5%) */
+                    border-radius: 50%;
+                    z-index: 1;
+                }
+            }
+            
+            .drip {
+                display: block;
+                width: 50px;
+                height: 60px;
+                border-bottom-left-radius: 25px;
+                border-bottom-right-radius: 25px;
+                background-color: var(--vanilla);
+            }
+            
+            .drip1 {
+                top: 53px;
+                left: 5px;
+                transform: skewY(15deg);
+                height: 48px;
+                width: 40px;
+            }
+            
+            .drip2 {
+                top: 69px;
+                left: 181px;
+                transform: skewY(-15deg);
+            }
+            
+            .drip3 {
+                top: 54px;
+                left: 90px;
+                width: 80px;
+                border-bottom-left-radius: 40px;
+                border-bottom-right-radius: 40px;
+            }
+            
+            .candle {
+                position: relative;
+                width: 16px;
+                height: 50px;
+                top: -20px;
+                left: 50%;
+                margin-left: -8px;
+                z-index: 10;
+            }
+
+            .candlestick {
+                background-color: #7B020B;
+                width: 16px;
+                height: 50px;
+                border-radius: 8px / 4px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 10;
+            }
+            
+            .wick {
+                background-color: black;
+                width: 2px;
+                height: 10px;
+                position: absolute;
+                top: -10px;
+                left: 50%;
+                margin-left: -1px;
+                z-index: 11;
+            }
+            
+            .flame {
+                position: absolute;
+                background-color: orange;
+                width: 15px;
+                height: 35px;
+                border-radius: 10px 10px 10px 10px / 25px 25px 10px 10px;
+                top: -34px;
+                left: 50%;
+                margin-left: -7.5px;
+                z-index: 10;
+                box-shadow:
+                    0 0 10px rgba(orange, 0.5),
+                    0 0 20px rgba(orange, 0.5),
+                    0 0 60px rgba(orange, 0.5),
+                    0 0 80px rgba(orange, 0.5);
+                transform-origin: 50% 90%;
+                animation: flicker 1s ease-in-out alternate infinite;
+            }
+            
+            @keyframes flicker {
+                0% {
+                    transform: skewX(5deg);
+                    box-shadow: 
+                        0 0 10px rgba(orange, 0.2),
+                        0 0 20px rgba(orange, 0.2),
+                        0 0 60px rgba(orange, 0.2),
+                        0 0 80px rgba(orange, 0.2) }
+                25% {
+                    transform: skewX(-5deg);
+                    box-shadow:
+                        0 0 10px rgba(orange, 0.5),
+                        0 0 20px rgba(orange, 0.5),
+                        0 0 60px rgba(orange, 0.5),
+                        0 0 80px rgba(orange, 0.5) }
+                50% {
+                    transform: skewX(10deg);
+                    box-shadow:
+                        0 0 10px rgba(orange, 0.3),
+                        0 0 20px rgba(orange, 0.3),
+                        0 0 60px rgba(orange, 0.3),
+                        0 0 80px rgba(orange, 0.3) }
+                75% {
+                    transform: skewX(-10deg);
+                    box-shadow:
+                        0 0 10px rgba(orange, 0.4),
+                        0 0 20px rgba(orange, 0.4),
+                        0 0 60px rgba(orange, 0.4),
+                        0 0 80px rgba(orange, 0.4) }
+                100% {
+                    transform: skewX(5deg);
+                    box-shadow:
+                        0 0 10px rgba(orange, 0.5),
+                        0 0 20px rgba(orange, 0.5),
+                        0 0 60px rgba(orange, 0.5),
+                        0 0 80px rgba(orange, 0.5) }
+            }
+            
+            .instructions-container {
+                margin: 20px auto;
+                color: rgb(14, 14, 14);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .instructions-container p {
+                margin: 0;
+            }
+            
+            .instructions-container button {
+                padding: 10px 20px;
+                font-size: 16px;
+                background-color: #3b4cca;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                margin-top: 10px;
+                margin-bottom: 20px;
+                transition: background-color 0.3s;
+    
+            }
+            
+            .instructions-container button:hover {
+                background-color: #3b4cca;
+            }
+            
+            #instructions {
+                margin: 20px auto;
+                text-align: center;
+            }
+            
+            #micInstructions, #cursorInstructions {
+                color: rgb(14, 14, 14);
+            }
+            .video-container {
+                margin-top: 20px;
+            }
+            .choice-button {
+                background-color: #3b4cca; /* Default button color */
+                color: white;
+                padding: 10px 15px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+                margin: 10px 5px; /* Space between buttons */
+                transition: background-color 0.3s; /* Smooth transition for hover effect */
+            }
+            
+            .choice-button:hover {
+                background-color: #2a398e; /* Darker blue on hover */
+                box-shadow: #2a398e 0px 0px 10px; /* Add shadow on hover */
+            }
+            
+            .red-button {
+                background-color: rgb(200, 9, 9); /* Red color for the song button */
+            }
+            
+            .red-button:hover {
+                background-color: darkred; /* Darker red on hover */
+            }
+            iframe {
+                width: 100%;
+                height: 200px;
+                border-radius: 10px;
+            }
+            #confetti-canvas {
+                position: fixed;
+                top: 0;
+                left: 0;
+                pointer-events: none;
+                z-index: 10; /* Ensure the confetti is below the cake */
+            }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1 id="birthdayMessage">🎉 Happy Birthday! <br><br>🎂<br> <br>Gotta catch 'em all on your special day! ⚡</h1>
+
+        <div class="cake-container">
+            <div class="cake">
+                <div class="plate"></div>
+                <div class="layer layer-bottom"></div>
+                <div class="layer layer-middle"></div>
+                <div class="layer layer-top"></div>
+                <div class="icing"></div>
+                <div class="drip drip1"></div>
+                <div class="drip drip2"></div>
+                <div class="drip drip3"></div>
+                <div class="candle">
+                    <div class="candlestick">
+                        <div class="wick"></div>
+                    </div>
+                    <div class="flame"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Button to enable microphone for blowing the candle -->
+        <button id="enableMicButton" class="choice-button" aria-label="Enable microphone to blow the candle">🎤 Blow the Candle with Microphone 🎤</button>
+
+        <!-- Button to play the Happy Birthday song -->
+        <button id="playSongButton" class="choice-button red-button" aria-label="Play Happy Birthday song">🎵 Play Happy Birthday Song 🎸</button>
+    </div>
+
+    <!-- Confetti Canvas -->
+    <canvas id="confetti-canvas" style="position: fixed; top: 0; left: 0; pointer-events: none;"></canvas>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Prompt user for first name
+            let user = prompt("Write your first name:");
+            while (!user || user.length < 2) {
+                user = prompt("Please write your first name (at least 2 characters):");
+            }
+            let age = prompt("Write your age:");
+            while (!age || isNaN(age) || age.length < 2) {
+                age = prompt("Please write a valid age (at least 2 digits):");
+            }
+            const sanitizeInput = (input) => {
+                const div = document.createElement('div');
+                div.textContent = input;
+                return div.innerHTML;
+            };
+
+            const sanitizedUser = sanitizeInput(user);
+            const sanitizedAge = sanitizeInput(age);
+
+            //document.title = `Happy Birthday ${sanitizedUser}! Sweet ${sanitizedAge}!`;
+            document.getElementById("birthdayMessage").innerHTML = `🎉 Happy Birthday ${sanitizedUser}!<br>✨Sweet ${sanitizedAge}!✨<br>🎂 Gotta catch 'em all on your special day! ⚡`;
+
+            // Constants
+            const flame = document.querySelector(".flame");
+            const enableMicButton = document.getElementById("enableMicButton");
+
+            // Blow detection variables
+            let audioContext;
+            let micStream;
+            let analyser;
+            const blowThreshold = 150; // Adjust this value as needed
+            const distanceThreshold = 0.9; // Adjust this value as needed
+            let flameOpacity = 1;
+
+            // Confetti setup
+            const confettiCanvas = document.getElementById("confetti-canvas");
+            const confettiCtx = confettiCanvas.getContext("2d");
+            confettiCanvas.width = window.innerWidth;
+            confettiCanvas.height = window.innerHeight;
+        
+            let confettiParticles = [];
+            let confettiAnimationId;
+            let confettiStopTimeout;
+        
+            function createConfetti() {
+                    const colors = ["#ffcb05", "#3b4cca", "#ff0000", "#00ff00", "#0000ff"];
+                    confettiParticles = [];
+                        for (let i = 0; i < 150; i++) {
+                            confettiParticles.push({
+                                x: Math.random() * confettiCanvas.width,
+                                y: Math.random() * confettiCanvas.height,
+                                radius: Math.random() * 10 + 5,
+                                color: colors[Math.floor(Math.random() * colors.length)],
+                                velocity: {
+                                    x: (Math.random() - 0.2) * 5, // Reduced initial velocity
+                                    y: (Math.random() - 0.2) * 5, // Reduced initial velocity
+                                },
+                            });
+                        }
+                }
+        
+            function drawConfetti() {
+                        confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+                        confettiParticles.forEach((particle) => {
+                            confettiCtx.beginPath();
+                            confettiCtx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+                            confettiCtx.fillStyle = particle.color;
+                            confettiCtx.fill();
+                            confettiCtx.closePath();
+        
+                            // Apply gravity and slow down velocity
+                            particle.velocity.y += 0.06; // Gravity effect
+                            particle.velocity.x *= 0.8; // Slow down horizontal velocity
+                            particle.velocity.y *= 0.6; // Slow down vertical velocity
+        
+                            particle.x += particle.velocity.x;
+                            particle.y += particle.velocity.y;
+        
+                            // Reset particles when they fall off the screen
+                            if (particle.y > confettiCanvas.height) {
+                                particle.y = 0;
+                            }
+                            if (particle.x > confettiCanvas.width || particle.x < 0) {
+                                particle.velocity.x = -particle.velocity.x;
+                            }
+                        });
+        
+                        confettiAnimationId = requestAnimationFrame(drawConfetti);
+            }
+        
+            function startConfetti() {
+                    createConfetti();
+                    drawConfetti();
+        
+                    // Stop confetti after 5 seconds
+                    if (confettiStopTimeout) {
+                        clearTimeout(confettiStopTimeout);
+                    }
+                    confettiStopTimeout = setTimeout(() => {
+                        cancelAnimationFrame(confettiAnimationId);
+                        }, 5000); // 5 seconds
+            }
+
+            // Start blow detection with microphone
+            function startBlowDetection() {
+                navigator.mediaDevices.getUserMedia({ audio: true })
+                    .then(function (stream) {
+                        audioContext = new AudioContext();
+                        micStream = stream;
+                        const microphone = audioContext.createMediaStreamSource(stream);
+                        analyser = audioContext.createAnalyser();
+                        analyser.fftSize = 256;
+                        microphone.connect(analyser);
+                        listenForBlow();
+                    })
+                    .catch(function (err) {
+                        console.error("Error accessing microphone:", err);
+                        alert("Microphone access denied. Please allow microphone access to use this feature.");
+                    });
+            }
+
+            // Listen for blow using microphone
+            function listenForBlow() {
+                const buffer = analyser.frequencyBinCount;
+                const data = new Uint8Array(buffer);
+
+                function detectBlow() {
+                    analyser.getByteFrequencyData(data);
+                    const averageAmplitude = data.reduce((sum, value) => sum + value, 0) / buffer;
+
+                    if (averageAmplitude > blowThreshold) {
+                        const distance = 1 / averageAmplitude; // Calculate distance based on amplitude
+                        if (distance < distanceThreshold) {
+                            flameOpacity = Math.max(0, flameOpacity - 0.05);
+                            flame.style.opacity = flameOpacity;
+
+                            if (flameOpacity <= 0) {
+                                startConfetti(); // Start confetti when flame is blown out
+                                // Stop blow detection
+                                cancelAnimationFrame(detectBlow);
+                            }
+                        }
+                    }
+
+                    requestAnimationFrame(detectBlow);
+                }
+
+                detectBlow();
+            }
+
+            // Event listener for enabling microphone
+            enableMicButton.addEventListener("click", function () {
+                startBlowDetection();
+            });
+
+            // Event listener for playing the Happy Birthday song
+            document.getElementById("playSongButton").addEventListener("click", function () {
+                const videoUrl = "https://www.youtube.com/watch?v=pq1B-vXywdw?autoplay=1"; // Add autoplay parameter
+                window.open(videoUrl, "_blank"); // Open the video in a new window/tab
+            });
+
+            // Cleanup on page unload
+            window.addEventListener("beforeunload", function () {
+                if (audioContext) {
+                    audioContext.close();
+                    micStream.getTracks().forEach(track => track.stop());
+                }
+            });
+        });
+    </script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+</body>
+</html>
