@@ -1,14 +1,14 @@
 # responsive-birthday-card
 
-###✨ Features
+##✨ Features
 
 ✅ Responsive Design – Works on mobile, tablet, and desktop.  
 ✅ Animated Elements – Adds a festive touch.  
 ✅ Easy to Customize – Change names, messages, and colors.  
 ✅ Lightweight – Pure HTML, CSS, and JavaScript.  
 
-###🚀 How to Use
-## Clone the repository
+##🚀 How to Use
+# Clone the repository
 ```bash
 git clone https://github.com/asiraMada-404/responsive-birthday-card.git
 ```
