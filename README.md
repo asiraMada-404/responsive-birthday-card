@@ -2,7 +2,7 @@
 
 ##✨ Features
 
-✅ Responsive Design – Works on mobile, tablet, and desktop.  
+✅ Responsive Design – Works on desktop.  
 ✅ Animated Elements – Adds a festive touch.  
 ✅ Easy to Customize – Change names, messages, and colors.  
 ✅ Lightweight – Pure HTML, CSS, and JavaScript.  
