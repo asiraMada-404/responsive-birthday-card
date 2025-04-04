@@ -1,5 +1,6 @@
 # responsive-birthday-card
-✨ Features
+
+###✨ Features
 
 ✅ Responsive Design – Works on mobile, tablet, and desktop.  
 ✅ Animated Elements – Adds a festive touch.  
